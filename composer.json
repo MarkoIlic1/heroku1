@@ -1,0 +1,11 @@
+{
+    "name": "ln-github/heroku1",
+    "description": "testiranje ghithuba",
+    "license": "MIT",
+    "require": {
+        "php": ">=7.3"
+    },
+    "require-dev": {
+        "phpunit/phpunit" : "^9"
+    }
+}
