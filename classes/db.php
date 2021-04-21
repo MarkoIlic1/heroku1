@@ -1,21 +1,46 @@
 <?php
 
+/*
+ou have successfully created a new database. The details are below.
+
+Username: TnepseETvP
+
+Database name: TnepseETvP
+
+Password: Zc1x0XUbxN
+
+Server: remotemysql.com
+
+Port: 3306
+
+These are the username and password to log in to your database and phpMyAdmin
+
+*/
+
 //Za uključivanje prikaza grešaka na web stranici
 ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 
-include 'config.php';
+include 'DotEnv.php';
 
 class Database {
 
     private $connection;
-    private $dbhost = DB_HOST;
-    private $database = DB_NAME;
-    private $user = DB_USER;
-    private $pass = DB_PASS;
+    private $dbhost;
+    private $database;
+    private $user;
+    private $pass;
 
     public function __construct() {
+        if(file_exists(__DIR__ . '/../.env'))
+        $dotenv = new DotEnv(__DIR__ . '/../.env');
+        $dotenv->load();
+
+        $this->dbhost = getenv('DB_HOST');
+        $this->database = getenv('DB_NAME');
+        $this->user = getenv('DB_USER');
+        $this->pass = getenv('DB_PASS');
 
         try {
 
